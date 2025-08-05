@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import Cookies from 'js-cookie';
-import BookCard from '../BookCard';
 import { useParams } from 'react-router-dom';
 import BookShelfNav from '../BookShelfNav';
 import './index.css';
@@ -57,13 +56,16 @@ function BookShelf() {
         </aside>
 
         <main className="bookshelf-main">
-          <div className="bookshelf-search">
-            <input
-              type="text"
-              placeholder="Search by title or author..."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
+          <div className="bookshelf-header">
+            <h2>All Books</h2>
+            <div className="bookshelf-search">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </div>
           </div>
 
           <div className="bookshelf-list">
@@ -76,19 +78,17 @@ function BookShelf() {
             ) : (
               <ul className="books-grid">
                 {books.map((book) => (
-                  <div className="book-main">
-          <img src={book.cover_pic} alt={book.title} className="book-image" />
-          <div className="book-info">
-            <h2>{book.title}</h2>
-            <p className="author-name">{book.author_name}</p>
-            <p className="rating">
-              Avg Rating <span role="img" aria-label="star">⭐</span> {book.rating}
-            </p>
-            <p className="status">
-              Status : <span className="status-value">{book.read_status}</span>
-            </p>
-          </div>
-        </div>
+                  <li key={book.id} className="book-card">
+                    <img src={book.cover_pic} alt={book.title} className="book-cover" />
+                    <h3 className="book-title">{book.title}</h3>
+                    <p className="author-name">{book.author_name}</p>
+                    <p className="rating">
+                      Avg Rating <span role="img" aria-label="star">⭐</span> {book.rating}
+                    </p>
+                    <p className="status">
+                      Status: <span className="status-value">{book.read_status}</span>
+                    </p>
+                  </li>
                 ))}
               </ul>
             )}
