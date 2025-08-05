@@ -37,7 +37,7 @@ function BookShelf() {
         }
       } catch (error) {
         setErrorMsg('Something went wrong while fetching data.');
-        console.error(error);
+        console.log(error);
       } finally {
         setLoading(false);
       }

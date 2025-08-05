@@ -5,7 +5,7 @@ function BulkUpdated() {
   const [selectedBooks, setSelectedBooks] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
-  // ✅ Load books from 'mybooks' in localStorage
+
   useEffect(() => {
     const storedBooks = JSON.parse(localStorage.getItem('mybooks')) || [];
     setBooks(storedBooks);
@@ -33,15 +33,15 @@ function BulkUpdated() {
     );
 
     setBooks(updatedBooks);
-    localStorage.setItem('mybooks', JSON.stringify(updatedBooks)); // ✅ Store in the same key
-    alert('📘 Book status updated!');
+    localStorage.setItem('mybooks', JSON.stringify(updatedBooks)); 
+    alert('Book status updated!');
     setSelectedBooks([]);
     setSelectAll(false);
   };
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>📚 Bulk Update Books</h2>
+      <h2>Bulk Update Books</h2>
 
       <label style={{ display: 'block', margin: '10px 0' }}>
         <input
@@ -68,7 +68,7 @@ function BulkUpdated() {
                   color: book.updated ? 'green' : 'red',
                 }}
               >
-                {book.updated ? '✅ Updated' : '❌ Not Updated'}
+                {book.updated ? ' Updated' : 'Not Updated'}
               </span>
             </label>
           </li>
@@ -76,7 +76,7 @@ function BulkUpdated() {
       </ul>
 
       <button onClick={handleSubmit} disabled={selectedBooks.length === 0}>
-        ✅ Submit Changes
+         Submit Changes
       </button>
     </div>
   );

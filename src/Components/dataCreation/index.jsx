@@ -7,7 +7,7 @@ function DataCreation() {
   const [imageUrl, setImageUrl] = useState('');
   const [books, setBooks] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  const [previousData, setPreviousData] = useState(null); // Stores original before editing
+  const [previousData, setPreviousData] = useState(null); 
 
   useEffect(() => {
     const storedBooks = JSON.parse(localStorage.getItem('myBooks')) || [];
@@ -18,7 +18,7 @@ function DataCreation() {
     e.preventDefault();
 
     if (editingId) {
-      // Save edited book
+      
       const updatedBooks = books.map(book =>
         book.id === editingId
           ? { ...book, title, author, rating, imageUrl }
@@ -29,8 +29,7 @@ function DataCreation() {
       setEditingId(null);
       setPreviousData(null);
     } else {
-      // Add new book
-      const newBook = {
+     const newBook = {
         id: Date.now(),
         title,
         author,
@@ -63,7 +62,7 @@ function DataCreation() {
   };
 
   const handleEdit = (book) => {
-    setPreviousData(book); // Save previous data before editing
+    setPreviousData(book); 
     setEditingId(book.id);
     setTitle(book.title);
     setAuthor(book.author);
